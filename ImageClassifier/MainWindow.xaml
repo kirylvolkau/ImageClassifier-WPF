@@ -1,0 +1,39 @@
+﻿<Window x:Class="ImageClassifier.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ImageClassifier"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="800">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="10">
+            <Button Content="Select image"
+                HorizontalAlignment="Center"
+                    Click="Button_Click"
+                />
+            <Image x:Name="selectedImage"
+                   Stretch="Uniform"
+                   Margin="0 10 0 0"/>
+        </StackPanel>
+        <ListView x:Name="predictionsListView"
+                Grid.Column="1" 
+                  Width="200"
+                  VerticalAlignment="Center">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Tag" Width="80"
+                                    DisplayMemberBinding="{Binding TagName}"/>
+                    <GridViewColumn Header="Probability" Width="120"
+                                    DisplayMemberBinding="{Binding Path=Probability
+                        ,StringFormat=P2}"/>
+                    
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
